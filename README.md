@@ -1,5 +1,5 @@
-# LiteLLM-CloudRun
-This repo helps to deploy [LiteLLM](https://github.com/BerriAI/litellm) on Google Cloud Run with a few steps. 
+# LiteLLM on CloudRun
+This repo helps to deploy [LiteLLM](https://github.com/BerriAI/litellm) on Google Cloud Run with one step. 
 
 **why need proxy?**
 - Existing OpenAI users do not need to change the code. They only need to modify the base URL and API Key to access Gemini models.

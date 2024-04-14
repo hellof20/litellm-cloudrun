@@ -2,12 +2,15 @@ litellm_settings:
   drop_params: True
   set_verbose: False
   vertex_project: "speedy-victory-336109"
-  vertex_location: "asia-east1"
+  vertex_location: "us-central1"
 
 model_list:
   - model_name: gpt-3.5-turbo
     litellm_params:
       model: vertex_ai/gemini-pro
+  - model_name: gemini-1.0-pro-001
+    litellm_params:
+      model: vertex_ai/gemini-1.0-pro-001
       safety_settings:
       - category: HARM_CATEGORY_HARASSMENT
         threshold: BLOCK_NONE
@@ -16,10 +19,10 @@ model_list:
       - category: HARM_CATEGORY_SEXUALLY_EXPLICIT
         threshold: BLOCK_NONE
       - category: HARM_CATEGORY_DANGEROUS_CONTENT
-        threshold: BLOCK_NONE
-  - model_name: gemini-pro
+        threshold: BLOCK_NONE      
+  - model_name: gemini-1.0-pro-002
     litellm_params:
-      model: vertex_ai/gemini-pro
+      model: vertex_ai/gemini-1.0-pro-002
       safety_settings:
       - category: HARM_CATEGORY_HARASSMENT
         threshold: BLOCK_NONE
@@ -43,7 +46,7 @@ model_list:
         threshold: BLOCK_NONE      
   - model_name: claude-3-sonnet
     litellm_params:
-      model: vertex_ai/claude-3-sonnet@20240229       
+      model: vertex_ai/claude-3-sonnet@20240229
 
 general_settings: 
   master_key: pwm-123

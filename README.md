@@ -1,4 +1,4 @@
-# litellm-cloudrun
+# LiteLLM-CloudRun
 This repo helps to deploy [LiteLLM](https://github.com/BerriAI/litellm) on Google Cloud Run with a few steps. 
 
 **why need proxy?**
@@ -7,19 +7,17 @@ This repo helps to deploy [LiteLLM](https://github.com/BerriAI/litellm) on Googl
 - Build a unified Gemini Proxy platform. Various applications can be directly connected using API Key. There is no need to integrate Service Account. 
 - Various open source projects already support OpenAI, but do not support the Vertex Gemini model. With this, they will be compatible with all without major modifications.
 
-## Prepare your Litellm config yaml file
-modify the config.yaml
+## Prepare your LiteLLM config yaml file
+Edit config.yaml
+1. modify "vertex_project" and "vertex_location"
+2. modify "master_key"
 
-## Set env
-```
-export PROJECT_ID=speedy-victory-336109
-export REGION=asia-east1
-```
 ## Deploy LiteLLM proxy on CloudRun
 ```
+export PROJECT_ID=your_project_id
+export REGION=region_name
 bash deploy.sh
 ```
-
 ## Test
 - use curl to test
 ```
@@ -35,7 +33,24 @@ sample result:
 {"id":"chatcmpl-abf4eb0b-b275-47f8-8e36-b0649c43c346","choices":[{"finish_reason":"stop","index":0,"message":{"content":"I am Gemini, a multi-modal AI model, developed by Google.","role":"assistant"}}],"created":1713067892,"model":"gemini-1.0-pro-001","object":"chat.completion","system_fingerprint":null,"usage":{"prompt_tokens":5,"completion_tokens":15,"total_tokens":20}}
 ```
 
+## Update your config.yaml file
+1. Upload your new config.yaml to a new secret version
+```
+gcloud secrets versions add litellm-config \
+    --data-file="config.yaml" \
+    --project=${PROJECT_ID}
+```
+2. Reload the Cloud Run service
+```
+gcloud run services update litellm-proxy-001 \
+    --region=${REGION} \
+    --project=${PROJECT_ID} \
+    --set-secrets=/app/config.yaml=litellm-config:latest
+```
+
 ## Clean
 ```
+export PROJECT_ID=your_project_id
+export REGION=region_name
 bash clean.sh
 ```

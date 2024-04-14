@@ -54,5 +54,5 @@ gcloud run deploy litellm-proxy-001 --image=${IMAGE} \
     --args="--config","/app/config.yaml"
 
 
-# gcloud secrets versions add litellm-config --data-file="config.yaml"
+# gcloud secrets versions add litellm-config --data-file="config.yaml" --project=${PROJECT_ID}
 # gcloud run services update litellm-proxy-001 --region=${REGION} --project=${PROJECT_ID} --set-secrets=/app/config.yaml=litellm-config:latest

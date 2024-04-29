@@ -11,6 +11,7 @@ model_list:
   - model_name: gemini-1.0-pro-001
     litellm_params:
       model: vertex_ai/gemini-1.0-pro-001
+      temperature: 0.2
       safety_settings:
       - category: HARM_CATEGORY_HARASSMENT
         threshold: BLOCK_NONE
@@ -23,6 +24,7 @@ model_list:
   - model_name: gemini-1.0-pro-002
     litellm_params:
       model: vertex_ai/gemini-1.0-pro-002
+      temperature: 0.2
       safety_settings:
       - category: HARM_CATEGORY_HARASSMENT
         threshold: BLOCK_NONE
@@ -35,6 +37,7 @@ model_list:
   - model_name: gemini-pro-1.5
     litellm_params:
       model: vertex_ai/gemini-1.5-pro-preview-0409
+      temperature: 0.2
       safety_settings:
       - category: HARM_CATEGORY_HARASSMENT
         threshold: BLOCK_NONE
@@ -44,9 +47,6 @@ model_list:
         threshold: BLOCK_NONE
       - category: HARM_CATEGORY_DANGEROUS_CONTENT
         threshold: BLOCK_NONE      
-  - model_name: claude-3-sonnet
-    litellm_params:
-      model: vertex_ai/claude-3-sonnet@20240229
 
 general_settings: 
   master_key: pwm-123

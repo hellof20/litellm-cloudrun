@@ -2,7 +2,7 @@
 
 #export PROJECT_ID=speedy-victory-336109
 #export REGION=asia-east1
-export IMAGE=litellm/litellm:v1.35.4
+export IMAGE=litellm/litellm:v1.35.31
 
 if [ ! $PROJECT_ID ]; then
     echo "please set PROJECT_ID"
@@ -53,6 +53,8 @@ gcloud run deploy litellm-proxy-001 --image=${IMAGE} \
     --update-secrets=/app/config.yaml=litellm-config:latest \
     --args="--config","/app/config.yaml"
 
+#echo "Allow public access"
+#gcloud run services add-iam-policy-binding --region=${REGION} --project=${PROJECT_ID} --member=allUsers --role=roles/run.invoker litellm-proxy-001
 
 # gcloud secrets versions add litellm-config --data-file="config.yaml" --project=${PROJECT_ID}
 # gcloud run services update litellm-proxy-001 --region=${REGION} --project=${PROJECT_ID} --set-secrets=/app/config.yaml=litellm-config:latest

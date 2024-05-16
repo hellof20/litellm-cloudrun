@@ -1,6 +1,6 @@
 litellm_settings:
-  drop_params: True
-  set_verbose: False
+  # drop_params: True
+  # set_verbose: False
   vertex_project: "speedy-victory-336109"
   vertex_location: "us-central1"
 

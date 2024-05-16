@@ -34,7 +34,7 @@ model_list:
         threshold: BLOCK_NONE
       - category: HARM_CATEGORY_DANGEROUS_CONTENT
         threshold: BLOCK_NONE
-  - model_name: gemini-pro-1.5
+  - model_name: gemini-1.5-pro
     litellm_params:
       model: vertex_ai/gemini-1.5-pro-preview-0514
       temperature: 1.0
@@ -47,7 +47,7 @@ model_list:
         threshold: BLOCK_NONE
       - category: HARM_CATEGORY_DANGEROUS_CONTENT
         threshold: BLOCK_NONE
-  - model_name: gemini-pro-1.5-flash
+  - model_name: gemini-1.5-flash
     litellm_params:
       model: vertex_ai/gemini-1.5-flash-preview-0514
       temperature: 1.0
